@@ -1,8 +1,15 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.Anything" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.Anything.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/dune</item>
+        <item name="windowSplashScreenAnimationDuration">100</item>
+        <item name="windowSplashScreenAnimatedIcon">@android:color/transparent</item>
+        <item name="postSplashScreenTheme">@style/Theme.Anything</item>
     </style>
 
     <style name="Theme.Anything" parent="Base.Theme.Anything" />

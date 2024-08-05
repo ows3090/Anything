@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Anything</string>
+    <string name="app_name_uppercase">ANYTHING</string>
 </resources>
