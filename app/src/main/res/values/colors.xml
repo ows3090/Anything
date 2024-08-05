@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="dune">#FF343434</color>
+    <color name="sunshade">#FFFF9B26</color>
+    <color name="eggsour">#FFFFF2E3</color>
+    <color name="carbongrey">#FF5D5D5D</color>
+    <color name="palebluelily">#FFD0EEFF</color>
+    <color name="scotchmist">#FFFFFADE</color>
+    <color name="mistyrose">#FFFFE1E1</color>
+    <color name="hawkesblue">#FFE7DCFF</color>
+    <color name="desertsand">#FFECCAA3</color>
 </resources>
