@@ -18,6 +18,7 @@ timber = "5.0.1"
 rxjava = "3.1.8"
 rxandroid = "3.0.2"
 rxkotlin = "3.0.1"
+circleindicator = "2.1.6"
 
 [libraries]
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
@@ -41,6 +42,7 @@ splash-screen = { group = "androidx.core", name = "core-splashscreen", version.r
 rxjava = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
 rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxandroid" }
 rxkotlin = { group = "io.reactivex.rxjava3", name = "rxkotlin", version.ref = "rxkotlin" }
+circleindicator = { group = "me.relex", name = "circleindicator", version.ref = "circleindicator" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

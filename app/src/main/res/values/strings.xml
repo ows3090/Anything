@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Anything</string>
     <string name="app_name_uppercase">ANYTHING</string>
+    <string name="onboarding_title_message">If you\'re thinking about\nwhat to eat now,\nask anyting!</string>
+    <string name="onboarding1_title_message">When the menu doesn\’t\ncome to mind,\nPlease let me know\nas below example!</string>
+    <string name="onboarding2_title_message">Let\’s look at the\nrecommended food,\nI can get another\nrecommendation!</string>
+    <string name="onboarding3_title_message">3 food recommendations\na day you can get it!</string>
+    <string name="onboarding_sample_answer1">Please recommend a noodle dish\nthat\'s good to eat in hot weather!</string>
+    <string name="onboarding_sample_answer2">Please recommend food with protein,\nnot meat!</string>
+    <string name="start">START</string>
 </resources>

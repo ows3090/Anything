@@ -24,7 +24,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -42,6 +42,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.circleindicator)
     implementation(libs.splash.screen)
     implementation(libs.rxkotlin)
     implementation(libs.rxjava)

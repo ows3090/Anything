@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dune">
+
+        <TextView
+            android:id="@+id/tv_step"
+            android:layout_width="83dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/bg_all_round_corner_sunshade_radius_18dp"
+            android:fontFamily="@font/carterone_regular"
+            android:gravity="center"
+            android:text="STEP1"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="54dp"
+            android:layout_marginTop="116dp"
+            android:fontFamily="@font/carterone_regular"
+            android:textAlignment="center"
+            android:textColor="@color/sunshade"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="When the menu doesn’t\ncome to mind,\nPlease let me know\nas below example!" />
+
+        <View
+            android:id="@+id/v_top_blank"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_first_step_answer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="332" />
+
+        <TextView
+            android:id="@+id/tv_first_step_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/bg_tv_left_message_bubble"
+            android:paddingStart="16dp"
+            android:fontFamily="@font/noto_sans"
+            android:text="@string/onboarding_sample_answer1"
+            android:textColor="@color/bleachwhite"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/tv_second_step_answer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_top_blank"
+            app:layout_constraintVertical_weight="82"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_second_step_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_tv_right_message_bubble"
+            android:fontFamily="@font/noto_sans"
+            android:paddingStart="16dp"
+            android:text="@string/onboarding_sample_answer2"
+            android:textColor="@color/bleachwhite"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/v_bottom_blank"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_first_step_answer"
+            app:layout_constraintVertical_weight="82"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/v_bottom_blank"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_second_step_answer"
+            app:layout_constraintVertical_weight="96" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
