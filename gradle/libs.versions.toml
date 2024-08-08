@@ -19,6 +19,7 @@ rxjava = "3.1.8"
 rxandroid = "3.0.2"
 rxkotlin = "3.0.1"
 circleindicator = "2.1.6"
+glide = "4.16.0"
 
 [libraries]
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
@@ -43,6 +44,7 @@ rxjava = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjav
 rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxandroid" }
 rxkotlin = { group = "io.reactivex.rxjava3", name = "rxkotlin", version.ref = "rxkotlin" }
 circleindicator = { group = "me.relex", name = "circleindicator", version.ref = "circleindicator" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

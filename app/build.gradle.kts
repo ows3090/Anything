@@ -42,6 +42,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.glide)
     implementation(libs.circleindicator)
     implementation(libs.splash.screen)
     implementation(libs.rxkotlin)

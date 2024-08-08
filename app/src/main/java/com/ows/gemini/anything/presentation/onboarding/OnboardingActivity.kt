@@ -11,8 +11,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.ows.gemini.anything.R
 import com.ows.gemini.anything.databinding.ActivityOnboardingBinding
 import com.ows.gemini.anything.presentation.base.BaseActivity
+import com.ows.gemini.anything.presentation.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class OnboardingActivity : BaseActivity<ActivityOnboardingBinding>(R.layout.activity_onboarding) {
@@ -47,7 +47,7 @@ class OnboardingActivity : BaseActivity<ActivityOnboardingBinding>(R.layout.acti
             )
 
             btnStart.setOnClickListener {
-                Timber.d("btnStart click")
+                startActivity(HomeActivity.newIntent(this@OnboardingActivity))
             }
         }
 

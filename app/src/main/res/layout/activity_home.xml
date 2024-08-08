@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dune"
+        tools:context=".presentation.home.HomeActivity">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/carterone_regular"
+            android:lineHeight="28.6sp"
+            android:text="@string/home_main_title"
+            android:textColor="@color/sunshade"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_menu"
+            android:layout_width="210dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_all_round_corner"
+            android:backgroundTint="@color/sunshade"
+            android:padding="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_my"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_all_round_corner"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/carterone_regular"
+                android:text="@string/my"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_others"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_all_round_corner"
+                android:backgroundTint="@color/transparent"
+                android:fontFamily="@font/carterone_regular"
+                android:text="@string/others"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/v_top"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/rv_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_menu"
+            app:layout_constraintVertical_weight="40" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_image"
+            android:layout_width="0dp"
+            android:layout_height="260dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="12dp"
+            app:layout_constraintBottom_toTopOf="@id/v_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_top"
+            tools:listitem="@layout/item_home_image" />
+
+        <View
+            android:id="@+id/v_bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/btn_recommendations"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_image"
+            app:layout_constraintVertical_weight="114" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_recommendations"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginHorizontal="61dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/bg_all_round_corner"
+            android:backgroundTint="@color/sunshade"
+            android:fontFamily="@font/carterone_regular"
+            android:text="@string/menu_recommendations"
+            android:textColor="@color/dune"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

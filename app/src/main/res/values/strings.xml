@@ -8,4 +8,8 @@
     <string name="onboarding_sample_answer1">Please recommend a noodle dish\nthat\'s good to eat in hot weather!</string>
     <string name="onboarding_sample_answer2">Please recommend food with protein,\nnot meat!</string>
     <string name="start">START</string>
+    <string name="home_main_title">Glad to see you:)\n I\'ll help you with\ntoday\'s fun meal!</string>
+    <string name="my">MY</string>
+    <string name="others">OTHERS</string>
+    <string name="menu_recommendations">Menu recommendations</string>
 </resources>
