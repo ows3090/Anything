@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dune">
+
+        <TextView
+            android:id="@+id/tv_breakfast"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_all_round_corner_16dp"
+            android:backgroundTint="@color/carbongrey"
+            android:fontFamily="@font/carterone_regular"
+            android:gravity="bottom"
+            android:paddingBottom="14dp"
+            android:text="@string/breakfast"
+            android:textAlignment="center"
+            android:textColor="@color/sunshade"
+            android:textSize="18sp"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@id/tv_lunch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_lunch"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_all_round_corner_16dp"
+            android:backgroundTint="@color/carbongrey"
+            android:fontFamily="@font/carterone_regular"
+            android:gravity="bottom"
+            android:paddingBottom="14dp"
+            android:text="@string/lunch"
+            android:textAlignment="center"
+            android:textColor="@color/sunshade"
+            android:textSize="18sp"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_breakfast"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_dinner"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_all_round_corner_16dp"
+            android:backgroundTint="@color/carbongrey"
+            android:fontFamily="@font/carterone_regular"
+            android:gravity="bottom"
+            android:paddingBottom="14dp"
+            android:text="@string/dinner"
+            android:textAlignment="center"
+            android:textColor="@color/sunshade"
+            android:textSize="18sp"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@id/tv_midnight_meal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_breakfast" />
+
+        <TextView
+            android:id="@+id/tv_midnight_meal"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_all_round_corner_16dp"
+            android:backgroundTint="@color/carbongrey"
+            android:fontFamily="@font/carterone_regular"
+            android:gravity="bottom"
+            android:paddingBottom="14dp"
+            android:text="@string/midnight_meal"
+            android:textAlignment="center"
+            android:textColor="@color/sunshade"
+            android:textSize="18sp"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_dinner"
+            app:layout_constraintTop_toBottomOf="@id/tv_lunch" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
