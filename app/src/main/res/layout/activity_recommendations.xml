@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ows.gemini.anything.presentation.recommendations.RecommendationsViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -61,6 +69,7 @@
         </LinearLayout>
 
         <TextView
+            android:onClick="@{()->viewModel.toSkip()}"
             android:id="@+id/tv_skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -112,10 +121,11 @@
             app:layout_constraintBottom_toTopOf="@id/ll_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_question" />
+            app:layout_constraintTop_toBottomOf="@id/tv_question"
+            bind:viewModel="@{viewModel}" />
 
         <include
-            android:id="@+id/layout_foodtype"
+            android:id="@+id/layout_like_food_type"
             layout="@layout/view_foodtype_question"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -123,7 +133,20 @@
             app:layout_constraintBottom_toTopOf="@id/ll_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_question" />
+            app:layout_constraintTop_toBottomOf="@id/tv_question"
+            bind:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/layout_dislike_food_type"
+            layout="@layout/view_foodtype_question"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/ll_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_question"
+            bind:viewModel="@{viewModel}" />
 
         <include
             android:id="@+id/layout_recently_food"
@@ -165,6 +188,8 @@
                 android:background="@drawable/bg_all_round_corner_desertsand_radius_12dp"
                 android:fontFamily="@font/carterone_regular"
                 android:text="@string/back"
+                android:onClick="@{()->viewModel.toBackStep()}"
+                android:textColor="@color/dune"
                 android:textSize="18sp"
                 android:visibility="gone"
                 tools:visibility="visible" />
@@ -174,9 +199,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_weight="1"
+                android:onClick="@{()->viewModel.toNextStep()}"
                 android:background="@drawable/bg_all_round_corner_sunshade_radius_12dp"
                 android:fontFamily="@font/carterone_regular"
                 android:text="@string/next"
+                android:textColor="@color/dune"
                 android:textSize="18sp" />
 
         </LinearLayout>

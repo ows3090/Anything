@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <import type="com.ows.gemini.anything.data.type.MealTime" />
+
+        <variable
+            name="viewModel"
+            type="com.ows.gemini.anything.presentation.recommendations.RecommendationsViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,6 +26,7 @@
             android:backgroundTint="@color/carbongrey"
             android:fontFamily="@font/carterone_regular"
             android:gravity="bottom"
+            android:onClick="@{()->viewModel.selectMealTime(MealTime.BreakFast)}"
             android:paddingBottom="14dp"
             android:text="@string/breakfast"
             android:textAlignment="center"
@@ -39,6 +49,7 @@
             android:fontFamily="@font/carterone_regular"
             android:gravity="bottom"
             android:paddingBottom="14dp"
+            android:onClick="@{()->viewModel.selectMealTime(MealTime.Lunch)}"
             android:text="@string/lunch"
             android:textAlignment="center"
             android:textColor="@color/sunshade"
@@ -55,6 +66,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="6dp"
+            android:onClick="@{()->viewModel.selectMealTime(MealTime.Dinner)}"
             android:background="@drawable/bg_all_round_corner_16dp"
             android:backgroundTint="@color/carbongrey"
             android:fontFamily="@font/carterone_regular"
@@ -76,6 +88,7 @@
             android:layout_marginStart="6dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp"
+            android:onClick="@{()->viewModel.selectMealTime(MealTime.Midnight_meal)}"
             android:background="@drawable/bg_all_round_corner_16dp"
             android:backgroundTint="@color/carbongrey"
             android:fontFamily="@font/carterone_regular"
