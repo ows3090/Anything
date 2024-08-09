@@ -12,4 +12,24 @@
     <string name="my">MY</string>
     <string name="others">OTHERS</string>
     <string name="menu_recommendations">Menu recommendations</string>
+    <string name="recommendation_question1">Please choose between breakfast, lunch, and dinner, midnight meal!</string>
+    <string name="recommendation_question2">Please choose your favorite food type!</string>
+    <string name="recommendation_question3">Please choose the type of food you don\'t like!</string>
+    <string name="recommendation_question4">Is there anything you would like to exclude from the 10 menus you recommended recently?</string>
+    <string name="recommendation_question5">Please let me know what you want additionally!</string>
+    <string name="next">NEXT</string>
+    <string name="back">BACK</string>
+    <string name="skip">SKIP</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="lunch">Lunch</string>
+    <string name="dinner">Dinner</string>
+    <string name="midnight_meal">Midnight_meal</string>
+    <string name="korean">Korean</string>
+    <string name="chinese">Chinese</string>
+    <string name="japanese">Japanese</string>
+    <string name="western">Western</string>
+    <string name="asian">Asian</string>
+    <string name="mexican">Mexican</string>
+    <string name="detail_question_subtitle">* The more detailed it is, the better</string>
+    <string name="detail_edittext_hint">Ex. Since I\'m allergic to nuts, please recommend anything other than those with nuts!</string>
 </resources>

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ows.gemini.anything.R
 import com.ows.gemini.anything.databinding.ActivityHomeBinding
 import com.ows.gemini.anything.presentation.base.BaseActivity
+import com.ows.gemini.anything.presentation.recommendations.RecommendationsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,24 +45,29 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         }
     }
 
-    private fun bindViews() {
-        binding.btnMy.setOnClickListener {
-            binding.btnMy.backgroundTintList = resources.getColorStateList(R.color.white, null)
-            binding.btnOthers.backgroundTintList =
-                resources.getColorStateList(R.color.transparent, null)
-            binding.btnMy.setTextColor(resources.getColorStateList(R.color.black, null))
-            binding.btnOthers.setTextColor(resources.getColorStateList(R.color.white, null))
-        }
+    private fun bindViews() =
+        with(binding) {
+            btnMy.setOnClickListener {
+                btnMy.backgroundTintList = resources.getColorStateList(R.color.white, null)
+                btnOthers.backgroundTintList =
+                    resources.getColorStateList(R.color.transparent, null)
+                btnMy.setTextColor(resources.getColorStateList(R.color.black, null))
+                btnOthers.setTextColor(resources.getColorStateList(R.color.white, null))
+            }
 
-        binding.btnOthers.setOnClickListener {
-            binding.btnMy.backgroundTintList =
-                resources.getColorStateList(R.color.transparent, null)
-            binding.btnOthers.backgroundTintList =
-                resources.getColorStateList(R.color.white, null)
-            binding.btnMy.setTextColor(resources.getColorStateList(R.color.white, null))
-            binding.btnOthers.setTextColor(resources.getColorStateList(R.color.black, null))
+            btnOthers.setOnClickListener {
+                btnMy.backgroundTintList =
+                    resources.getColorStateList(R.color.transparent, null)
+                btnOthers.backgroundTintList =
+                    resources.getColorStateList(R.color.white, null)
+                btnMy.setTextColor(resources.getColorStateList(R.color.white, null))
+                btnOthers.setTextColor(resources.getColorStateList(R.color.black, null))
+            }
+
+            btnRecommendations.setOnClickListener {
+                startActivity(RecommendationsActivity.newIntent(this@HomeActivity))
+            }
         }
-    }
 
     companion object {
         fun newIntent(context: Context) = Intent(context, HomeActivity::class.java)
