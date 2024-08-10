@@ -57,6 +57,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.datastore)
+    implementation(libs.datastore.rxjava)
     implementation(libs.viewModel.ktx)
     implementation(libs.generativeai)
     implementation(libs.glide)

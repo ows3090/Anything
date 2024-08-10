@@ -17,6 +17,7 @@
             android:fontFamily="@font/carterone_regular"
             android:gravity="center"
             android:text="STEP1"
+            android:textColor="@color/dune"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/main"
@@ -53,6 +54,7 @@
             android:background="@drawable/bg_all_round_corner_sunshade_radius_12dp"
             android:fontFamily="@font/carterone_regular"
             android:text="@string/start"
+            android:textColor="@color/dune"
             android:textSize="18sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"

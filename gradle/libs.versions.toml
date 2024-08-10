@@ -13,6 +13,7 @@ activity = "1.9.0"
 constraintlayout = "2.1.4"
 splash-screen = "1.0.0-beta02"
 viewModel-ktx = "2.4.0"
+datastore = "1.1.0"
 
 retrofit = "2.11.0"
 timber = "5.0.1"
@@ -42,6 +43,8 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 splash-screen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash-screen" }
 viewModel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewModel-ktx" }
+datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+datastore-rxjava = { group = "androidx.datastore", name = "datastore-preferences-rxjava3", version.ref = "datastore"}
 
 rxjava = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
 rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxandroid" }
