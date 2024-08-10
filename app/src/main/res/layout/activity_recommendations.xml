@@ -3,6 +3,10 @@
 
     <data>
 
+        <import type="com.ows.gemini.anything.data.type.PromptStep" />
+
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.ows.gemini.anything.presentation.recommendations.RecommendationsViewModel" />
@@ -41,7 +45,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
-                android:background="@color/white_20" />
+                android:background="@{viewModel.promptStep.value >= 2 ? @color/sunshade : @color/white_20}" />
 
             <View
                 android:id="@+id/v_step3"
@@ -49,7 +53,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
-                android:background="@color/white_20" />
+                android:background="@{viewModel.promptStep.value >= 3 ? @color/sunshade : @color/white_20}" />
+            />
 
             <View
                 android:id="@+id/v_step4"
@@ -57,29 +62,31 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
-                android:background="@color/white_20" />
+                android:background="@{viewModel.promptStep.value >= 4 ? @color/sunshade : @color/white_20}" />
+            />
 
             <View
                 android:id="@+id/v_step5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/white_20" />
+                android:background="@{viewModel.promptStep.value >= 5 ? @color/sunshade : @color/white_20}" />
+            />
 
         </LinearLayout>
 
         <TextView
-            android:onClick="@{()->viewModel.toSkip()}"
             android:id="@+id/tv_skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/carterone_regular"
+            android:onClick="@{()->viewModel.toSkip()}"
             android:text="@string/skip"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:visibility="gone"
+            android:visibility="@{(viewModel.promptStep != PromptStep.Step1 &amp;&amp; viewModel.promptStep != PromptStep.Step5)? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ll_step"
             tools:visibility="visible" />
@@ -117,7 +124,7 @@
             layout="@layout/view_mealtime_question"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:visibility="visible"
+            android:visibility="@{viewModel.promptStep == PromptStep.Step1 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toTopOf="@id/ll_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +136,7 @@
             layout="@layout/view_foodtype_question"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:visibility="invisible"
+            android:visibility="@{viewModel.promptStep == PromptStep.Step2 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toTopOf="@id/ll_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +148,7 @@
             layout="@layout/view_foodtype_question"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:visibility="invisible"
+            android:visibility="@{viewModel.promptStep == PromptStep.Step3 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toTopOf="@id/ll_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -153,7 +160,7 @@
             layout="@layout/view_recentyly_food_question"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:visibility="invisible"
+            android:visibility="@{viewModel.promptStep == PromptStep.Step4 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toTopOf="@id/ll_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -164,11 +171,12 @@
             layout="@layout/view_detail_question"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:visibility="invisible"
+            android:visibility="@{viewModel.promptStep == PromptStep.Step5 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toTopOf="@id/ll_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_question" />
+            app:layout_constraintTop_toBottomOf="@id/tv_question"
+            bind:viewModel="@{viewModel}" />
 
         <LinearLayout
             android:id="@+id/ll_next"
@@ -187,21 +195,20 @@
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/bg_all_round_corner_desertsand_radius_12dp"
                 android:fontFamily="@font/carterone_regular"
-                android:text="@string/back"
                 android:onClick="@{()->viewModel.toBackStep()}"
+                android:text="@string/back"
                 android:textColor="@color/dune"
                 android:textSize="18sp"
-                android:visibility="gone"
-                tools:visibility="visible" />
+                android:visibility="@{viewModel.promptStep != PromptStep.Step1 ? View.VISIBLE : View.GONE}" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_next"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_weight="1"
-                android:onClick="@{()->viewModel.toNextStep()}"
                 android:background="@drawable/bg_all_round_corner_sunshade_radius_12dp"
                 android:fontFamily="@font/carterone_regular"
+                android:onClick="@{()->viewModel.toNextStep()}"
                 android:text="@string/next"
                 android:textColor="@color/dune"
                 android:textSize="18sp" />

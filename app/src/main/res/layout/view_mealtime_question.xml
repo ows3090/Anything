@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -23,7 +24,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="6dp"
             android:background="@drawable/bg_all_round_corner_16dp"
-            android:backgroundTint="@color/carbongrey"
+            android:backgroundTint="@{viewModel.mealTime == MealTime.BreakFast ? @color/white : @color/carbongrey}"
             android:fontFamily="@font/carterone_regular"
             android:gravity="bottom"
             android:onClick="@{()->viewModel.selectMealTime(MealTime.BreakFast)}"
@@ -35,7 +36,8 @@
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toStartOf="@id/tv_lunch"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:backgroundTint="@color/carbongrey" />
 
         <TextView
             android:id="@+id/tv_lunch"
@@ -45,11 +47,11 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/bg_all_round_corner_16dp"
-            android:backgroundTint="@color/carbongrey"
+            android:backgroundTint="@{viewModel.mealTime == MealTime.Lunch ? @color/white : @color/carbongrey}"
             android:fontFamily="@font/carterone_regular"
             android:gravity="bottom"
-            android:paddingBottom="14dp"
             android:onClick="@{()->viewModel.selectMealTime(MealTime.Lunch)}"
+            android:paddingBottom="14dp"
             android:text="@string/lunch"
             android:textAlignment="center"
             android:textColor="@color/sunshade"
@@ -57,7 +59,8 @@
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_breakfast"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:backgroundTint="@color/carbongrey" />
 
         <TextView
             android:id="@+id/tv_dinner"
@@ -66,11 +69,11 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="6dp"
-            android:onClick="@{()->viewModel.selectMealTime(MealTime.Dinner)}"
             android:background="@drawable/bg_all_round_corner_16dp"
-            android:backgroundTint="@color/carbongrey"
+            android:backgroundTint="@{viewModel.mealTime == MealTime.Dinner ? @color/white : @color/carbongrey}"
             android:fontFamily="@font/carterone_regular"
             android:gravity="bottom"
+            android:onClick="@{()->viewModel.selectMealTime(MealTime.Dinner)}"
             android:paddingBottom="14dp"
             android:text="@string/dinner"
             android:textAlignment="center"
@@ -79,7 +82,8 @@
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toStartOf="@id/tv_midnight_meal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_breakfast" />
+            app:layout_constraintTop_toBottomOf="@id/tv_breakfast"
+            tools:backgroundTint="@color/carbongrey" />
 
         <TextView
             android:id="@+id/tv_midnight_meal"
@@ -88,11 +92,11 @@
             android:layout_marginStart="6dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp"
-            android:onClick="@{()->viewModel.selectMealTime(MealTime.Midnight_meal)}"
             android:background="@drawable/bg_all_round_corner_16dp"
-            android:backgroundTint="@color/carbongrey"
+            android:backgroundTint="@{viewModel.mealTime == MealTime.Midnight_meal ? @color/white : @color/carbongrey}"
             android:fontFamily="@font/carterone_regular"
             android:gravity="bottom"
+            android:onClick="@{()->viewModel.selectMealTime(MealTime.Midnight_meal)}"
             android:paddingBottom="14dp"
             android:text="@string/midnight_meal"
             android:textAlignment="center"
@@ -101,7 +105,8 @@
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_dinner"
-            app:layout_constraintTop_toBottomOf="@id/tv_lunch" />
+            app:layout_constraintTop_toBottomOf="@id/tv_lunch"
+            tools:backgroundTint="@color/carbongrey" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="com.ows.gemini.anything.data.type.PromptStep" />
 
         <import type="com.ows.gemini.anything.data.type.FoodType" />
 
@@ -23,7 +26,7 @@
             android:layout_marginTop="58dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/bg_all_round_corner_12dp"
-            android:backgroundTint="@color/carbongrey"
+            android:backgroundTint="@{viewModel.promptStep == PromptStep.Step2 ? viewModel.likeFoodTypes.contains(FoodType.Korean) ? @color/white : @color/carbongrey : viewModel.dislikeFoodTypes.contains(FoodType.Korean) ? @color/white : @color/carbongrey}"
             android:fontFamily="@font/carterone_regular"
             android:gravity="center"
             android:onClick="@{()->viewModel.selectFoodType(FoodType.Korean)}"
@@ -33,7 +36,8 @@
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toStartOf="@id/tv_chinese"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:backgroundTint="@color/carbongrey" />
 
         <TextView
             android:id="@+id/tv_chinese"
@@ -43,17 +47,18 @@
             android:layout_marginTop="58dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/bg_all_round_corner_12dp"
-            android:backgroundTint="@color/carbongrey"
+            android:backgroundTint="@{viewModel.promptStep == PromptStep.Step2 ? viewModel.likeFoodTypes.contains(FoodType.Chinese) ? @color/white : @color/carbongrey : viewModel.dislikeFoodTypes.contains(FoodType.Chinese) ? @color/white : @color/carbongrey}"
             android:fontFamily="@font/carterone_regular"
             android:gravity="center"
+            android:onClick="@{()->viewModel.selectFoodType(FoodType.Chinese)}"
             android:text="@string/chinese"
             android:textColor="@color/sunshade"
             android:textSize="18sp"
-            android:onClick="@{()->viewModel.selectFoodType(FoodType.Chinese)}"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toStartOf="@id/tv_japanese"
             app:layout_constraintStart_toEndOf="@id/tv_korean"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:backgroundTint="@color/carbongrey" />
 
         <TextView
             android:id="@+id/tv_japanese"
@@ -62,18 +67,19 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="58dp"
             android:layout_marginEnd="20dp"
-            android:onClick="@{()->viewModel.selectFoodType(FoodType.Japanese)}"
             android:background="@drawable/bg_all_round_corner_12dp"
-            android:backgroundTint="@color/carbongrey"
+            android:backgroundTint="@{viewModel.promptStep == PromptStep.Step2 ? viewModel.likeFoodTypes.contains(FoodType.Japanese) ? @color/white : @color/carbongrey : viewModel.dislikeFoodTypes.contains(FoodType.Japanese) ? @color/white : @color/carbongrey}"
             android:fontFamily="@font/carterone_regular"
             android:gravity="center"
+            android:onClick="@{()->viewModel.selectFoodType(FoodType.Japanese)}"
             android:text="@string/japanese"
             android:textColor="@color/sunshade"
             android:textSize="18sp"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_chinese"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:backgroundTint="@color/carbongrey" />
 
         <TextView
             android:id="@+id/tv_western"
@@ -83,18 +89,19 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/bg_all_round_corner_12dp"
-            android:backgroundTint="@color/carbongrey"
+            android:backgroundTint="@{viewModel.promptStep == PromptStep.Step2 ? viewModel.likeFoodTypes.contains(FoodType.Western) ? @color/white : @color/carbongrey : viewModel.dislikeFoodTypes.contains(FoodType.Western) ? @color/white : @color/carbongrey}"
             android:fontFamily="@font/carterone_regular"
             android:gravity="center"
+            android:onClick="@{()->viewModel.selectFoodType(FoodType.Western)}"
             android:text="@string/western"
             android:textColor="@color/sunshade"
             android:textSize="18sp"
-            android:onClick="@{()->viewModel.selectFoodType(FoodType.Western)}"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toStartOf="@id/tv_asian"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_korean" />
+            app:layout_constraintTop_toBottomOf="@id/tv_korean"
+            tools:backgroundTint="@color/carbongrey" />
 
         <TextView
             android:id="@+id/tv_asian"
@@ -102,12 +109,12 @@
             android:layout_height="0dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
-            android:onClick="@{()->viewModel.selectFoodType(FoodType.Asian)}"
             android:layout_marginEnd="5dp"
             android:background="@drawable/bg_all_round_corner_12dp"
-            android:backgroundTint="@color/carbongrey"
+            android:backgroundTint="@{viewModel.promptStep == PromptStep.Step2 ? viewModel.likeFoodTypes.contains(FoodType.Asian) ? @color/white : @color/carbongrey : viewModel.dislikeFoodTypes.contains(FoodType.Asian) ? @color/white : @color/carbongrey}"
             android:fontFamily="@font/carterone_regular"
             android:gravity="center"
+            android:onClick="@{()->viewModel.selectFoodType(FoodType.Asian)}"
             android:text="@string/asian"
             android:textColor="@color/sunshade"
             android:textSize="18sp"
@@ -115,7 +122,8 @@
             app:layout_constraintEnd_toStartOf="@id/tv_mexican"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@id/tv_western"
-            app:layout_constraintTop_toBottomOf="@id/tv_chinese" />
+            app:layout_constraintTop_toBottomOf="@id/tv_chinese"
+            tools:backgroundTint="@color/carbongrey" />
 
         <TextView
             android:id="@+id/tv_mexican"
@@ -125,18 +133,19 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/bg_all_round_corner_12dp"
-            android:backgroundTint="@color/carbongrey"
+            android:backgroundTint="@{viewModel.promptStep == PromptStep.Step2 ? viewModel.likeFoodTypes.contains(FoodType.Mexican) ? @color/white : @color/carbongrey : viewModel.dislikeFoodTypes.contains(FoodType.Mexican) ? @color/white : @color/carbongrey}"
             android:fontFamily="@font/carterone_regular"
             android:gravity="center"
+            android:onClick="@{()->viewModel.selectFoodType(FoodType.Mexican)}"
             android:text="@string/mexican"
             android:textColor="@color/sunshade"
-            android:onClick="@{()->viewModel.selectFoodType(FoodType.Mexican)}"
             android:textSize="18sp"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@id/tv_asian"
-            app:layout_constraintTop_toBottomOf="@id/tv_japanese" />
+            app:layout_constraintTop_toBottomOf="@id/tv_japanese"
+            tools:backgroundTint="@color/carbongrey" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

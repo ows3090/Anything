@@ -12,6 +12,7 @@ material = "1.10.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 splash-screen = "1.0.0-beta02"
+viewModel-ktx = "2.4.0"
 
 retrofit = "2.11.0"
 timber = "5.0.1"
@@ -20,6 +21,7 @@ rxandroid = "3.0.2"
 rxkotlin = "3.0.1"
 circleindicator = "2.1.6"
 glide = "4.16.0"
+generativeai = "0.9.0"
 
 [libraries]
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
@@ -39,12 +41,14 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 splash-screen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash-screen" }
+viewModel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewModel-ktx" }
 
 rxjava = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
 rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxandroid" }
 rxkotlin = { group = "io.reactivex.rxjava3", name = "rxkotlin", version.ref = "rxkotlin" }
 circleindicator = { group = "me.relex", name = "circleindicator", version.ref = "circleindicator" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+generativeai = { group = "com.google.ai.client.generativeai", name = "generativeai", version.ref = "generativeai" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

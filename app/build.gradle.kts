@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -17,6 +19,18 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField(
+            "String",
+            "GEMINI_KEY",
+            gradleLocalProperties(rootDir, providers).getProperty("GEMINI_KEY"),
+        )
+
+        buildConfigField(
+            "String",
+            "DALLE_KEY",
+            gradleLocalProperties(rootDir, providers).getProperty("DALLE_KEY"),
+        )
     }
 
     buildTypes {
@@ -38,10 +52,13 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
+    implementation(libs.viewModel.ktx)
+    implementation(libs.generativeai)
     implementation(libs.glide)
     implementation(libs.circleindicator)
     implementation(libs.splash.screen)
