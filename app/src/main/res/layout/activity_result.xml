@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ows.gemini.anything.presentation.result.ResultViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dune"
+        tools:context=".presentation.result.ResultActivity">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/carterone_regular"
+            android:lineHeight="31.2sp"
+            android:textColor="@color/sunshade"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Anyting's\nrecommendation is pasta!" />
+
+        <View
+            android:id="@+id/v_top"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/iv_food"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_constraintVertical_weight="100" />
+
+        <ImageView
+            android:id="@+id/iv_food"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/bg_all_round_corner_24dp"
+            app:layout_constraintBottom_toTopOf="@id/v_bottom"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_top"
+            tools:backgroundTint="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_mealtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_all_round_corner"
+            android:backgroundTint="@color/dune"
+            android:fontFamily="@font/noto_sans"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="4dp"
+            android:textColor="@color/sunshade"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/iv_food"
+            app:layout_constraintTop_toTopOf="@id/iv_food"
+            tools:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="212dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/carterone_regular"
+            android:textAlignment="center"
+            android:textColor="@color/sunshade"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_food"
+            app:layout_constraintEnd_toEndOf="@id/iv_food"
+            app:layout_constraintStart_toStartOf="@id/iv_food"
+            tools:text="FOODNAMEFOODN..." />
+
+        <View
+            android:id="@+id/v_bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/btn_home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_food"
+            app:layout_constraintVertical_weight="130" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_home"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_all_round_corner_sunshade_radius_12dp"
+            android:fontFamily="@font/carterone_regular"
+            android:text="@string/go_home"
+            android:textColor="@color/dune"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

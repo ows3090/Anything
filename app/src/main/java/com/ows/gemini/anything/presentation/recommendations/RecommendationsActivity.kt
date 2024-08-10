@@ -12,6 +12,7 @@ import com.ows.gemini.anything.R
 import com.ows.gemini.anything.data.type.PromptStep
 import com.ows.gemini.anything.databinding.ActivityRecommendationsBinding
 import com.ows.gemini.anything.presentation.base.BaseActivity
+import com.ows.gemini.anything.presentation.result.ResultActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -53,6 +54,7 @@ class RecommendationsActivity : BaseActivity<ActivityRecommendationsBinding>(R.l
     private fun observeData() {
         observePromptStep()
         observeRecentlyFood()
+        observePrompt()
     }
 
     private fun observePromptStep() {
@@ -74,6 +76,18 @@ class RecommendationsActivity : BaseActivity<ActivityRecommendationsBinding>(R.l
     private fun observeRecentlyFood() {
         recommendationViewModel.recentlyFoods.observe(this) { foods ->
             adapter.setRecentlyFoods(recentlyFoods = foods)
+        }
+    }
+
+    private fun observePrompt() {
+        recommendationViewModel.prompt.observe(this) { prompt ->
+            startActivity(
+                ResultActivity.newIntent(
+                    this@RecommendationsActivity,
+                    recommendationViewModel.mealTime.value?.text ?: "",
+                    prompt,
+                ),
+            )
         }
     }
 

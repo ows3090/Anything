@@ -1,5 +1,7 @@
 package com.ows.gemini.anything.data.di
 
+import com.ows.gemini.anything.data.repository.ImageRepository
+import com.ows.gemini.anything.data.repository.ImageRepositoryImpl
 import com.ows.gemini.anything.data.repository.LocalRepository
 import com.ows.gemini.anything.data.repository.LocalRepositoryImpl
 import dagger.Binds
@@ -14,4 +16,8 @@ interface RepositoryModule {
     @Binds
     @Singleton
     fun bindLocalRepository(localRepositoryImpl: LocalRepositoryImpl): LocalRepository
+
+    @Binds
+    @Singleton
+    fun bindImageRepository(imageRepositoryImpl: ImageRepositoryImpl): ImageRepository
 }

@@ -57,6 +57,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.logging.interceptor)
+    implementation(libs.retrofit.rxjava)
     implementation(libs.datastore)
     implementation(libs.datastore.rxjava)
     implementation(libs.viewModel.ktx)

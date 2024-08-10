@@ -2,9 +2,6 @@ package com.ows.gemini.anything.presentation.recommendations
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.google.ai.client.generativeai.GenerativeModel
-import com.ows.gemini.anything.BuildConfig
 import com.ows.gemini.anything.data.type.FoodType
 import com.ows.gemini.anything.data.type.MealTime
 import com.ows.gemini.anything.data.type.PromptStep
@@ -12,8 +9,6 @@ import com.ows.gemini.anything.data.type.toBackStep
 import com.ows.gemini.anything.data.type.toNextStep
 import com.ows.gemini.anything.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -43,11 +38,8 @@ class RecommendationsViewModel
         val recentlyFoods: LiveData<List<RecentlyFood>> = _recentlyFoods
         val additionalText = MutableLiveData<String>("")
 
-        private val genertativeModel =
-            GenerativeModel(
-                modelName = "gemini-1.5-flash",
-                apiKey = BuildConfig.GEMINI_KEY,
-            )
+        private val _prompt = MutableLiveData<String>()
+        val prompt: LiveData<String> = _prompt
 
         fun toNextStep() {
             if (_promptStep.value == PromptStep.Step5) {
@@ -146,7 +138,7 @@ class RecommendationsViewModel
         }
 
         fun makePrompt() {
-            var prompt = "Please give me one menu recommendation.\n"
+            var result = "Please give me one menu recommendation.\n"
             val mealtimePrompt = "I'm trying to choose what to eat for ${mealTime.value?.text}\n"
             val likeFoodTypePrompt =
                 if (likeFoodTypes.value?.isNotEmpty() == true) {
@@ -175,18 +167,12 @@ class RecommendationsViewModel
                 }
             val additionalPrompt = "And I hope you consider my last words. ${additionalText.value}\n"
             val final =
-                "If you were recommended just now, please exclude me.\n" +
+                "Be sure to exclude menu items that were recently recommended.\n" +
                     "Considering the above, please recommend one menu.\n" +
                     "The most important thing is just tell me the name of the menu. only the menu name\n"
-            prompt =
-                prompt + mealtimePrompt + likeFoodTypePrompt + dislikeFoodTypePrompt + exceptionfoodPrompt + additionalPrompt + final
+            result =
+                result + mealtimePrompt + likeFoodTypePrompt + dislikeFoodTypePrompt + exceptionfoodPrompt + additionalPrompt + final
 
-            Timber.d("Final prompt\n$prompt")
-            viewModelScope.launch {
-                val result = genertativeModel.generateContent(prompt)
-                Timber.d(
-                    "generate ${result.text}",
-                )
-            }
+            _prompt.value = result
         }
     }

@@ -16,6 +16,7 @@ viewModel-ktx = "2.4.0"
 datastore = "1.1.0"
 
 retrofit = "2.11.0"
+logging-interceptor = "4.12.0"
 timber = "5.0.1"
 rxjava = "3.1.8"
 rxandroid = "3.0.2"
@@ -27,6 +28,8 @@ generativeai = "0.9.0"
 [libraries]
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+retrofit-rxjava = { group = "com.squareup.retrofit2", name = "adapter-rxjava3", version.ref = "retrofit" }
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging-interceptor" }
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt-android" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt-android" }
@@ -44,7 +47,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 splash-screen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash-screen" }
 viewModel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewModel-ktx" }
 datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
-datastore-rxjava = { group = "androidx.datastore", name = "datastore-preferences-rxjava3", version.ref = "datastore"}
+datastore-rxjava = { group = "androidx.datastore", name = "datastore-preferences-rxjava3", version.ref = "datastore" }
 
 rxjava = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
 rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxandroid" }
@@ -52,6 +55,7 @@ rxkotlin = { group = "io.reactivex.rxjava3", name = "rxkotlin", version.ref = "r
 circleindicator = { group = "me.relex", name = "circleindicator", version.ref = "circleindicator" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 generativeai = { group = "com.google.ai.client.generativeai", name = "generativeai", version.ref = "generativeai" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -32,4 +32,6 @@
     <string name="mexican">Mexican</string>
     <string name="detail_question_subtitle">* The more detailed it is, the better</string>
     <string name="detail_edittext_hint">Ex. Since I\'m allergic to nuts, please recommend anything other than those with nuts!</string>
+    <string name="go_home">GO HOME</string>
+    <string name="result_title_format">Anyting\'s recommendation\nis %s!</string>
 </resources>
