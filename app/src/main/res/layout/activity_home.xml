@@ -72,12 +72,30 @@
             app:layout_constraintTop_toBottomOf="@id/ll_menu"
             app:layout_constraintVertical_weight="40" />
 
+        <TextView
+            android:id="@+id/iv_empty"
+            android:layout_width="0dp"
+            android:layout_height="260dp"
+            android:background="@drawable/bg_all_dotline_round_corner_20dp"
+            android:backgroundTint="@color/white_20"
+            android:fontFamily="@font/carterone_regular"
+            android:gravity="center"
+            android:paddingHorizontal="31dp"
+            android:text="@string/empty_message"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rv_image" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_image"
             android:layout_width="0dp"
             android:layout_height="260dp"
             android:clipToPadding="false"
             android:paddingHorizontal="12dp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@id/v_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

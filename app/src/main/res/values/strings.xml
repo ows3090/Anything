@@ -34,4 +34,5 @@
     <string name="detail_edittext_hint">Ex. Since I\'m allergic to nuts, please recommend anything other than those with nuts!</string>
     <string name="go_home">GO HOME</string>
     <string name="result_title_format">Anyting\'s recommendation\nis %s!</string>
+    <string name="empty_message">I don\'t have any recommendations yet!</string>
 </resources>
