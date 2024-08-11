@@ -77,7 +77,6 @@
             android:layout_width="0dp"
             android:layout_height="260dp"
             android:background="@drawable/bg_all_dotline_round_corner_20dp"
-            android:backgroundTint="@color/white_20"
             android:fontFamily="@font/carterone_regular"
             android:gravity="center"
             android:paddingHorizontal="31dp"

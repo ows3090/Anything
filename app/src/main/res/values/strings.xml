@@ -36,4 +36,9 @@
     <string name="result_title_format">Anyting\'s recommendation\nis %s!</string>
     <string name="empty_message">I don\'t have any recommendations yet!</string>
     <string name="empty_recently_food">I don\'t have any recent recommendations,\nso please press the next button!</string>
+    <string name="confirm">CONFIRM</string>
+    <string name="dialog_one_more_message_title">1 recommendation left</string>
+    <string name="dialog_one_more_messsage_subtitle">You can get one more recommendation!</string>
+    <string name="dialog_no_more_message_title">There are no more recommendations left</string>
+    <string name="ialog_no_more_message_subtitle">I used up today\'s recommendations, so I can\'t recommend any more</string>
 </resources>

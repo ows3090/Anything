@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ows.gemini.anything.R
 import com.ows.gemini.anything.databinding.ActivityHomeBinding
 import com.ows.gemini.anything.presentation.base.BaseActivity
-import com.ows.gemini.anything.presentation.recommendations.RecommendationsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -65,7 +64,12 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
             }
 
             btnRecommendations.setOnClickListener {
-                startActivity(RecommendationsActivity.newIntent(this@HomeActivity))
+                // val dialog = HomeDialogFragment()
+                HomeDialogFragment(
+                    title = getString(R.string.dialog_no_more_message_title),
+                    subTitle = getString(R.string.ialog_no_more_message_subtitle),
+                ).show(supportFragmentManager, HomeDialogFragment.TAG)
+                // startActivity(RecommendationsActivity.newIntent(this@HomeActivity))
             }
         }
 
