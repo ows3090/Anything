@@ -37,7 +37,10 @@ class OnBoardingPagerAdapter : RecyclerView.Adapter<OnBoardingPagerAdapter.Pager
         fun bind(position: Int) {
             when (position) {
                 0 -> {
-                    binding.tvStep.isVisible = false
+                    binding.tvIntroduce.isVisible = true
+                    binding.ivLeftIntroduce.isVisible = true
+                    binding.ivRightIntroduce.isVisible = true
+                    binding.tvStep.text = "Introduce"
                     binding.tvTitle.text =
                         binding.root.context.getString(R.string.onboarding_title_message)
                 }

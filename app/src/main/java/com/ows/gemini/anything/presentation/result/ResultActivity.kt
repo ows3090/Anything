@@ -63,7 +63,7 @@ class ResultActivity : BaseActivity<ActivityResultBinding>(R.layout.activity_res
                 binding.tvTitle.text =
                     String.format(getString(R.string.result_title_format), result)
             }
-            viewModel.generateImage("only $result image")
+            // viewModel.generateImage("only $result image")
         }
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
