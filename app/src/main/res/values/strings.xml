@@ -35,4 +35,5 @@
     <string name="go_home">GO HOME</string>
     <string name="result_title_format">Anyting\'s recommendation\nis %s!</string>
     <string name="empty_message">I don\'t have any recommendations yet!</string>
+    <string name="empty_recently_food">I don\'t have any recent recommendations,\nso please press the next button!</string>
 </resources>

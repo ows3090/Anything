@@ -29,11 +29,7 @@ class RecommendationsViewModel
 
         private val _recentlyFoods =
             MutableLiveData<List<RecentlyFood>>(
-                listOf(
-                    RecentlyFood("Pasta"),
-                    RecentlyFood("Pizza"),
-                    RecentlyFood("Toast"),
-                ),
+                listOf(),
             )
         val recentlyFoods: LiveData<List<RecentlyFood>> = _recentlyFoods
         val additionalText = MutableLiveData<String>("")
