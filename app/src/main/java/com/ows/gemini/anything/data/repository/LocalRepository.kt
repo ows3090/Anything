@@ -14,5 +14,5 @@ interface LocalRepository {
         name: String,
         time: Long,
         meta: String,
-    )
+    ): Long
 }

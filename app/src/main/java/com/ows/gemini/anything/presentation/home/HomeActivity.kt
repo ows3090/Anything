@@ -15,6 +15,7 @@ import com.ows.gemini.anything.databinding.ActivityHomeBinding
 import com.ows.gemini.anything.presentation.base.BaseActivity
 import com.ows.gemini.anything.presentation.recommendations.RecommendationsActivity
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
@@ -79,7 +80,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         viewModel.getMyRecentlyFoodImages()
         viewModel.recentlyFoodModels.observe(this) { foodModels ->
             if (foodModels == null) return@observe
-
+            Timber.d("recentlyFoodModels $foodModels")
             binding.progress.isVisible = false
             binding.rvImage.isInvisible = foodModels.isEmpty()
             binding.ivEmpty.isInvisible = foodModels.isNotEmpty()

@@ -11,6 +11,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,37 +26,43 @@ class HomeViewModel
         fun getMyRecentlyFoodImages() {
             val storageRef = FirebaseStorage.getInstance().reference
             compositeDisposable.add(
-                Flowable
-                    .just(
-                        listOf(
-                            RecentlyFoodModel(
-                                name = "CaliforniaBurritoBowl",
-                            ),
-                            RecentlyFoodModel(
-                                name = "KoreanBBQ",
-                            ),
-                        ),
-                    ).subscribeOn(Schedulers.io())
-                    .flatMapIterable { it }
-                    .flatMapSingle { foodModel ->
-                        Single.create<RecentlyFoodModel> { emitter ->
-                            storageRef
-                                .child("images/${foodModel.name}")
-                                .downloadUrl
-                                .addOnSuccessListener { uri ->
-                                    emitter.onSuccess(
-                                        foodModel.copy(
-                                            imageUrl = uri.toString(),
-                                            meta = "Dinner",
-                                        ),
-                                    )
-                                }
+                localRepository
+                    .getRecentlyFoods()
+                    .subscribeOn(Schedulers.io())
+                    .flatMap { foodModels ->
+                        if (foodModels.isEmpty()) {
+                            Flowable.just(emptyList<RecentlyFoodModel>())
+                        } else {
+                            Flowable
+                                .fromIterable(foodModels)
+                                .flatMapSingle { foodModel ->
+                                    Single.create<RecentlyFoodModel> { emitter ->
+                                        storageRef
+                                            .child("images/${foodModel.name}")
+                                            .downloadUrl
+                                            .addOnSuccessListener { uri ->
+                                                emitter.onSuccess(
+                                                    foodModel.copy(
+                                                        imageUrl = uri.toString(),
+                                                        meta = foodModel.meta,
+                                                    ),
+                                                )
+                                            }.addOnFailureListener {
+                                                emitter.onError(it)
+                                            }
+                                    }
+                                }.toList()
+                                .toFlowable()
                         }
-                    }.toList()
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { models ->
-                        _recentlyFoodModels.value = models
-                    },
+                    }.observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(
+                        { models ->
+                            _recentlyFoodModels.value = models
+                        },
+                        {
+                            Timber.e("getMyRecentlyFoodImages ${it.localizedMessage}")
+                        },
+                    ),
             )
         }
     }

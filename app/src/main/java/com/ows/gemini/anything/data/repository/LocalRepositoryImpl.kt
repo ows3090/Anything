@@ -41,13 +41,12 @@ class LocalRepositoryImpl
             name: String,
             time: Long,
             meta: String,
-        ) {
-            foodDao.insertEntity(
+        ): Long =
+            foodDao.insertTransaction(
                 RecentlyFoodEntity(
                     name = name,
                     time = time,
                     meta = meta,
                 ),
             )
-        }
     }

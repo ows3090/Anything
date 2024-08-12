@@ -3,9 +3,12 @@ package com.ows.gemini.anything.presentation.result
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ows.gemini.anything.data.repository.ImageRepository
+import com.ows.gemini.anything.data.repository.LocalRepository
 import com.ows.gemini.anything.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -14,6 +17,7 @@ class ResultViewModel
     @Inject
     constructor(
         private val imageRepository: ImageRepository,
+        private val localRepository: LocalRepository,
     ) : BaseViewModel() {
         private val _foodImage = MutableLiveData<String>()
         val foodImage: LiveData<String> = _foodImage
@@ -31,6 +35,29 @@ class ResultViewModel
                             Timber.e(error)
                         },
                     ),
+            )
+        }
+
+        fun saveRecommendation(
+            name: String,
+            meta: String,
+        ) {
+            compositeDisposable.add(
+                Single
+                    .create<Long> { emitter ->
+                        emitter.onSuccess(
+                            localRepository.insertFood(
+                                name,
+                                System.currentTimeMillis(),
+                                meta,
+                            ),
+                        )
+                    }.subscribeOn(Schedulers.io())
+                    .subscribe({
+                        Timber.d("success")
+                    }, {
+                        Timber.d("saveRecommendation ${it.localizedMessage}")
+                    }),
             )
         }
     }
