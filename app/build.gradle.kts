@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -57,6 +58,11 @@ android {
 }
 
 dependencies {
+    implementation(libs.room.runtime)
+    kapt(libs.room.compiler)
+    implementation(libs.room.rxjava)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.storage)
     implementation(libs.logging.interceptor)
     implementation(libs.retrofit.rxjava)
     implementation(libs.datastore)

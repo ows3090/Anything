@@ -164,7 +164,7 @@ class RecommendationsViewModel
             val additionalPrompt = "And I hope you consider my last words. ${additionalText.value}\n"
             val final =
                 "Be sure to exclude menu items that were recently recommended.\n" +
-                    "Considering the above, please recommend one menu.\n" +
+                    "Considering the above, please recommend menu food with various combinations\n" +
                     "The most important thing is just tell me the name of the menu. only the menu name\n"
             result =
                 result + mealtimePrompt + likeFoodTypePrompt + dislikeFoodTypePrompt + exceptionfoodPrompt + additionalPrompt + final

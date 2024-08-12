@@ -4,17 +4,22 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ows.gemini.anything.R
 import com.ows.gemini.anything.databinding.ActivityHomeBinding
 import com.ows.gemini.anything.presentation.base.BaseActivity
+import com.ows.gemini.anything.presentation.recommendations.RecommendationsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
-    private lateinit var adapter: HomeImageAdapter
+    private val viewModel by viewModels<HomeViewModel>()
+    private val adapter = HomeImageAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +32,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         }
         initViews()
         bindViews()
+        observeData()
     }
 
     private fun initViews() {
@@ -35,13 +41,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
             resources.getColorStateList(R.color.transparent, null)
         binding.btnMy.setTextColor(resources.getColorStateList(R.color.black, null))
         binding.btnOthers.setTextColor(resources.getColorStateList(R.color.white, null))
-
-        if (::adapter.isInitialized.not()) {
-            adapter = HomeImageAdapter()
-            binding.rvImage.adapter = adapter
-            binding.rvImage.layoutManager =
-                LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        }
+        binding.rvImage.adapter = adapter
+        binding.rvImage.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun bindViews() =
@@ -65,13 +67,25 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
             btnRecommendations.setOnClickListener {
                 // val dialog = HomeDialogFragment()
-                HomeDialogFragment(
-                    title = getString(R.string.dialog_no_more_message_title),
-                    subTitle = getString(R.string.ialog_no_more_message_subtitle),
-                ).show(supportFragmentManager, HomeDialogFragment.TAG)
-                // startActivity(RecommendationsActivity.newIntent(this@HomeActivity))
+//                HomeDialogFragment(
+//                    title = getString(R.string.dialog_no_more_message_title),
+//                    subTitle = getString(R.string.ialog_no_more_message_subtitle),
+//                ).show(supportFragmentManager, HomeDialogFragment.TAG)
+                startActivity(RecommendationsActivity.newIntent(this@HomeActivity))
             }
         }
+
+    private fun observeData() {
+        viewModel.getMyRecentlyFoodImages()
+        viewModel.recentlyFoodModels.observe(this) { foodModels ->
+            if (foodModels == null) return@observe
+
+            binding.progress.isVisible = false
+            binding.rvImage.isInvisible = foodModels.isEmpty()
+            binding.ivEmpty.isInvisible = foodModels.isNotEmpty()
+            adapter.setFoodModels(foodModels)
+        }
+    }
 
     companion object {
         fun newIntent(context: Context) = Intent(context, HomeActivity::class.java)
