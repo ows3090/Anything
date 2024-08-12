@@ -2,6 +2,9 @@ package com.ows.gemini.anything.presentation.recommendations
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.storage.FirebaseStorage
+import com.ows.gemini.anything.data.model.RecentlyFoodModel
+import com.ows.gemini.anything.data.repository.LocalRepository
 import com.ows.gemini.anything.data.type.FoodType
 import com.ows.gemini.anything.data.type.MealTime
 import com.ows.gemini.anything.data.type.PromptStep
@@ -9,12 +12,18 @@ import com.ows.gemini.anything.data.type.toBackStep
 import com.ows.gemini.anything.data.type.toNextStep
 import com.ows.gemini.anything.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 @HiltViewModel
 class RecommendationsViewModel
     @Inject
-    constructor() : BaseViewModel() {
+    constructor(
+        private val localRepository: LocalRepository,
+    ) : BaseViewModel() {
         private val _promptStep = MutableLiveData(PromptStep.Step1)
         val promptStep: LiveData<PromptStep> = _promptStep
 
@@ -36,6 +45,40 @@ class RecommendationsViewModel
 
         private val _prompt = MutableLiveData<String>()
         val prompt: LiveData<String> = _prompt
+
+        init {
+            val storageRef = FirebaseStorage.getInstance().reference
+            compositeDisposable.add(
+                Flowable
+                    .just(
+                        listOf(
+                            RecentlyFoodModel(
+                                name = "CaliforniaBurritoBowl",
+                            ),
+                            RecentlyFoodModel(
+                                name = "KoreanBBQ",
+                            ),
+                        ),
+                    ).subscribeOn(Schedulers.io())
+                    .flatMapIterable { it }
+                    .flatMapSingle { foodModel ->
+                        Single.create<RecentlyFood> { emitter ->
+                            storageRef
+                                .child("images/${foodModel.name}")
+                                .downloadUrl
+                                .addOnSuccessListener { uri ->
+                                    emitter.onSuccess(
+                                        RecentlyFood(name = foodModel.name),
+                                    )
+                                }
+                        }
+                    }.toList()
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe { foods ->
+                        _recentlyFoods.value = foods
+                    },
+            )
+        }
 
         fun toNextStep() {
             if (_promptStep.value == PromptStep.Step5) {
