@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.room.rxjava)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.storage)
+    implementation(libs.firebase.database)
     implementation(libs.logging.interceptor)
     implementation(libs.retrofit.rxjava)
     implementation(libs.datastore)

@@ -112,6 +112,7 @@ class ResultActivity : BaseActivity<ActivityResultBinding>(R.layout.activity_res
                             binding.gResult.isVisible = true
                             uploadImageToFirebase(bitmap = resource)
                             viewModel.saveRecommendation(result, mealtime)
+                            viewModel.updateRecommendation(result)
                         }
 
                         override fun onLoadCleared(placeholder: Drawable?) {

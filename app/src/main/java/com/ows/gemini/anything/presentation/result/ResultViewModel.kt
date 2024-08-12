@@ -2,6 +2,8 @@ package com.ows.gemini.anything.presentation.result
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.database.FirebaseDatabase
+import com.ows.gemini.anything.data.model.RankModel
 import com.ows.gemini.anything.data.repository.ImageRepository
 import com.ows.gemini.anything.data.repository.LocalRepository
 import com.ows.gemini.anything.presentation.base.BaseViewModel
@@ -59,5 +61,22 @@ class ResultViewModel
                         Timber.d("saveRecommendation ${it.localizedMessage}")
                     }),
             )
+        }
+
+        fun updateRecommendation(name: String) {
+            val databaseRef = FirebaseDatabase.getInstance().reference
+            val dataRef = databaseRef.child("ranks").child(name)
+            dataRef
+                .get()
+                .addOnSuccessListener {
+                    val rankModel = it.getValue(RankModel::class.java)
+                    if (rankModel != null) {
+                        dataRef.setValue(rankModel.copy(number = rankModel.number + 1))
+                    } else {
+                        dataRef.setValue(RankModel(name = name))
+                    }
+                }.addOnFailureListener {
+                    Timber.d("updateRank")
+                }
         }
     }

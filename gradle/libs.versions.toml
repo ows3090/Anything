@@ -63,6 +63,7 @@ glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "gl
 generativeai = { group = "com.google.ai.client.generativeai", name = "generativeai", version.ref = "generativeai" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase-bom" }
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage" }
+firebase-database = { group = "com.google.firebase", name = "firebase-database-ktx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
