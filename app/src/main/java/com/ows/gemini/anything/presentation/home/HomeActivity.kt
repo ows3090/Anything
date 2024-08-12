@@ -50,20 +50,44 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     private fun bindViews() =
         with(binding) {
             btnMy.setOnClickListener {
+                if (btnMy.textColors ==
+                    resources.getColorStateList(
+                        R.color.black,
+                        null,
+                    )
+                ) {
+                    return@setOnClickListener
+                }
                 btnMy.backgroundTintList = resources.getColorStateList(R.color.white, null)
                 btnOthers.backgroundTintList =
                     resources.getColorStateList(R.color.transparent, null)
                 btnMy.setTextColor(resources.getColorStateList(R.color.black, null))
                 btnOthers.setTextColor(resources.getColorStateList(R.color.white, null))
+                binding.progress.isVisible = true
+                binding.rvImage.isInvisible = true
+                binding.ivEmpty.isInvisible = true
+                viewModel.getMyRecentlyFoodModels()
             }
 
             btnOthers.setOnClickListener {
+                if (btnOthers.textColors ==
+                    resources.getColorStateList(
+                        R.color.black,
+                        null,
+                    )
+                ) {
+                    return@setOnClickListener
+                }
                 btnMy.backgroundTintList =
                     resources.getColorStateList(R.color.transparent, null)
                 btnOthers.backgroundTintList =
                     resources.getColorStateList(R.color.white, null)
                 btnMy.setTextColor(resources.getColorStateList(R.color.white, null))
                 btnOthers.setTextColor(resources.getColorStateList(R.color.black, null))
+                binding.progress.isVisible = true
+                binding.rvImage.isInvisible = true
+                binding.ivEmpty.isInvisible = true
+                viewModel.getOtherFoodModels()
             }
 
             btnRecommendations.setOnClickListener {
@@ -77,7 +101,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         }
 
     private fun observeData() {
-        viewModel.getMyRecentlyFoodImages()
+        viewModel.getMyRecentlyFoodModels()
         viewModel.recentlyFoodModels.observe(this) { foodModels ->
             if (foodModels == null) return@observe
             Timber.d("recentlyFoodModels $foodModels")
@@ -85,6 +109,16 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
             binding.rvImage.isInvisible = foodModels.isEmpty()
             binding.ivEmpty.isInvisible = foodModels.isNotEmpty()
             adapter.setFoodModels(foodModels)
+            binding.rvImage.scrollToPosition(0)
+        }
+
+        viewModel.rankFoodModels.observe(this) { foodModels ->
+            if (foodModels == null) return@observe
+            binding.progress.isVisible = false
+            binding.rvImage.isInvisible = foodModels.isEmpty()
+            binding.ivEmpty.isInvisible = foodModels.isNotEmpty()
+            adapter.setFoodModels(foodModels)
+            binding.rvImage.scrollToPosition(0)
         }
     }
 

@@ -6,6 +6,7 @@ import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
@@ -68,6 +69,7 @@ class ResultActivity : BaseActivity<ActivityResultBinding>(R.layout.activity_res
     private fun initViews() {
         binding.gEmpty.isVisible = true
         binding.gResult.isGone = true
+        binding.ivEmpty.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_infinitely))
         lifecycleScope.launch {
             val response = genertativeModel.generateContent(prompt)
             result = response.text?.filter { it.isLetter() } ?: ""
@@ -108,6 +110,7 @@ class ResultActivity : BaseActivity<ActivityResultBinding>(R.layout.activity_res
                             transition: Transition<in Bitmap>?,
                         ) {
                             binding.ivFood.setImageBitmap(resource)
+                            binding.ivEmpty.clearAnimation()
                             binding.gEmpty.isGone = true
                             binding.gResult.isVisible = true
                             uploadImageToFirebase(bitmap = resource)
@@ -133,9 +136,9 @@ class ResultActivity : BaseActivity<ActivityResultBinding>(R.layout.activity_res
         val task = imageRef.putBytes(bytes)
         task
             .addOnSuccessListener {
-                Timber.d("success")
+                Timber.d("uploadImageToFirebase success")
             }.addOnFailureListener {
-                Timber.e("fail")
+                Timber.e("uploadImageToFirebase fail")
             }
     }
 

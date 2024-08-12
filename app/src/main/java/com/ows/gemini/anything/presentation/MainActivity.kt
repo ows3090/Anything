@@ -34,6 +34,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         viewModel.checkFirstLaunch()
         lifecycleScope.launch {
             delay(1000)
+            startActivity(OnboardingActivity.newIntent(this@MainActivity))
             if (viewModel.isFirst.value == true) {
                 startActivity(OnboardingActivity.newIntent(this@MainActivity))
             } else {

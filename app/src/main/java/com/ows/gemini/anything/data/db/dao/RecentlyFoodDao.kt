@@ -28,7 +28,7 @@ interface RecentlyFoodDao {
     fun insertTransaction(entity: RecentlyFoodEntity): Long {
         val allList = getAll().blockingFirst()
         if (allList.size >= 10) {
-            delete(findOldest().blockingFirst())
+            delete(findOldest().blockingFirst()).subscribe()
         }
         return insert(entity)
     }

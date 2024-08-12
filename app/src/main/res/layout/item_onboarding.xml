@@ -132,6 +132,15 @@
             app:layout_constraintVertical_weight="82"
             tools:visibility="visible" />
 
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/v_bottom_blank"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_top_blank" />
+
         <View
             android:id="@+id/v_bottom_blank"
             android:layout_width="0dp"

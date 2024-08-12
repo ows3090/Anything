@@ -56,7 +56,7 @@ class ResultViewModel
                         )
                     }.subscribeOn(Schedulers.io())
                     .subscribe({
-                        Timber.d("success")
+                        Timber.d("saveRecommendation success")
                     }, {
                         Timber.d("saveRecommendation ${it.localizedMessage}")
                     }),

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.ows.gemini.anything.R
 import com.ows.gemini.anything.data.model.RecentlyFoodModel
 import com.ows.gemini.anything.databinding.ItemHomeImageBinding
 import timber.log.Timber
@@ -45,6 +46,7 @@ class HomeImageAdapter : RecyclerView.Adapter<HomeImageAdapter.ImageViewHolder>(
                 .with(binding.root)
                 .load(foodModels[position].imageUrl)
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
+                .placeholder(R.drawable.bg_all_round_corner_carbongrey_radius_20dp)
                 .into(binding.ivImage)
         }
     }

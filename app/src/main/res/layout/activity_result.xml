@@ -135,6 +135,7 @@
             android:layout_marginBottom="24dp"
             android:ellipsize="end"
             android:fontFamily="@font/carterone_regular"
+            android:maxLines="1"
             android:textAlignment="center"
             android:textColor="@color/sunshade"
             android:textSize="20sp"

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ows.gemini.anything.R
 import com.ows.gemini.anything.databinding.ItemOnboardingBinding
 
@@ -57,12 +58,20 @@ class OnBoardingPagerAdapter : RecyclerView.Adapter<OnBoardingPagerAdapter.Pager
                     binding.tvTitle.text =
                         binding.root.context.getString(R.string.onboarding2_title_message)
                     binding.tvStep.text = "STEP2"
+                    Glide
+                        .with(binding.root)
+                        .load(R.drawable.img_onboarding3)
+                        .into(binding.ivImage)
                 }
 
                 3 -> {
                     binding.tvTitle.text =
                         binding.root.context.getString(R.string.onboarding3_title_message)
                     binding.tvStep.text = "STEP3"
+                    Glide
+                        .with(binding.root)
+                        .load(R.drawable.img_onboarding4)
+                        .into(binding.ivImage)
                 }
             }
         }

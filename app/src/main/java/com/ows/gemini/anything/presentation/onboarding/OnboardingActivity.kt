@@ -43,6 +43,8 @@ class OnboardingActivity : BaseActivity<ActivityOnboardingBinding>(R.layout.acti
                         super.onPageSelected(position)
                         if (position == 3) {
                             btnStart.isVisible = true
+                        } else {
+                            btnStart.isVisible = false
                         }
                     }
                 },
