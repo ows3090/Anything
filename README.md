@@ -20,6 +20,8 @@ Whether you're craving something new or sticking to your favorites, Anything mak
 
 7. Get Your Menu: The prompt is sent through the Gemini API, which returns personalized meal suggestions just for you.
 
+Thank you
+
 
 
 
